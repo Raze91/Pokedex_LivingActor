@@ -1,6 +1,6 @@
 import React from "react";
 import "./PokeCard.css";
-import { TypesPins } from "../services/tools/TypesPins";
+import { TypesPins } from "../../services/tools/TypesPins";
 
 const PokeCard = ({ pokemon }) => {
     return (
