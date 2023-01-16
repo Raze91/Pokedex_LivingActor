@@ -1,0 +1,21 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: calc(320px - 1rem);
+    border: 1px solid black;
+    text-align: center;
+    padding: 1rem;
+    text-transform: capitalize;
+
+    .types {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+
+        span {
+            padding: 5px 10px;
+            color: white;
+            border-radius: 5px;
+        }
+    }
+}
