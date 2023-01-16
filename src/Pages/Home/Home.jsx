@@ -5,16 +5,23 @@ import { getPokemons } from "../../services/Pokemon/Pokemon";
 import { PokemonAPI } from "../../services/apis/apis";
 import "./Home.css";
 
+import { useDispatch, useSelector } from "react-redux";
+import { setPokemons } from "../../redux/slices/pokemonsSlice";
+import { setPagination } from "../../redux/slices/paginationSlice";
+
 const Home = () => {
+    const dispatch = useDispatch();
+
+    const pokemonList = useSelector((state) => state.pokemons.pokemons);
+    const pagination = useSelector((state) => state.pagination);
+
     const [isLoading, setIsLoading] = useState(true);
-    const [pokemons, setPokemons] = useState([]);
-    const [pagination, setPagination] = useState({ prev: null, next: null });
 
     useEffect(() => {
         getPokemons(PokemonAPI).then((res) => {
             Promise.all(res.pokemons).then((pokemons) => {
-                setPokemons(pokemons);
-                setPagination({ prev: res.previous, next: res.next });
+                dispatch(setPokemons(pokemons));
+                dispatch(setPagination({ prev: res.previous, next: res.next }));
                 setIsLoading(false);
             });
         });
@@ -23,8 +30,8 @@ const Home = () => {
     const handlePagination = (url) => {
         getPokemons(url).then((res) => {
             Promise.all(res.pokemons).then((pokemons) => {
-                setPokemons(pokemons);
-                setPagination({ prev: res.previous, next: res.next });
+                dispatch(setPokemons(pokemons));
+                dispatch(setPagination({ prev: res.previous, next: res.next }));
                 setIsLoading(false);
             });
         });
@@ -42,8 +49,8 @@ const Home = () => {
                     />
 
                     <section className="pokemons-ctnr">
-                        {pokemons.length > 0 &&
-                            pokemons.map((pokemon, key) => (
+                        {pokemonList.length > 0 &&
+                            pokemonList.map((pokemon, key) => (
                                 <PokeCard pokemon={pokemon} key={key} />
                             ))}
                     </section>
