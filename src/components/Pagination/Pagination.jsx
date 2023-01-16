@@ -1,4 +1,9 @@
-const Pagination = ({ pagination, handlePagination }) => {
+import React from "react";
+import "./Pagination.css";
+import { useSelector } from "react-redux";
+
+const Pagination = ({ handlePagination }) => {
+    const pagination = useSelector((state) => state.pagination);
     return (
         <div className="pagination-ctnr">
             <button

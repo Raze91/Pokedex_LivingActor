@@ -18,13 +18,19 @@ const Home = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
-        getPokemons(PokemonAPI).then((res) => {
-            Promise.all(res.pokemons).then((pokemons) => {
-                dispatch(setPokemons(pokemons));
-                dispatch(setPagination({ prev: res.previous, next: res.next }));
-                setIsLoading(false);
+        if (pokemonList.length === 0 || pagination.prev !== null) {
+            getPokemons(PokemonAPI).then((res) => {
+                Promise.all(res.pokemons).then((pokemons) => {
+                    dispatch(setPokemons(pokemons));
+                    dispatch(
+                        setPagination({ prev: res.previous, next: res.next })
+                    );
+                    setIsLoading(false);
+                });
             });
-        });
+        } else {
+            setIsLoading(false);
+        }
     }, []);
 
     const handlePagination = (url) => {
@@ -43,22 +49,19 @@ const Home = () => {
                 <p>Loading ...</p>
             ) : (
                 <>
-                    <Pagination
-                        pagination={pagination}
-                        handlePagination={handlePagination}
-                    />
+                    <Pagination handlePagination={handlePagination} />
 
                     <section className="pokemons-ctnr">
-                        {pokemonList.length > 0 &&
+                        {pokemonList.length > 0 ? (
                             pokemonList.map((pokemon, key) => (
                                 <PokeCard pokemon={pokemon} key={key} />
-                            ))}
+                            ))
+                        ) : (
+                            <p>Une erreur est survenue ...</p>
+                        )}
                     </section>
 
-                    <Pagination
-                        pagination={pagination}
-                        handlePagination={handlePagination}
-                    />
+                    <Pagination handlePagination={handlePagination} />
                 </>
             )}
         </main>

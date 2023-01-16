@@ -9,9 +9,3 @@ main {
   gap: 2rem;
   padding: 1rem 0;
 }
-
-.pagination-ctnr {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}

@@ -1,0 +1,14 @@
+.pagination-ctnr {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.pagination-ctnr button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.pagination-ctnr button:enabled:hover {
+  text-decoration: underline;
+}
