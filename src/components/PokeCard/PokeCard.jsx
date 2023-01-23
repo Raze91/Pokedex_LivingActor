@@ -1,5 +1,5 @@
 import React from "react";
-import "./PokeCard.css";
+import styles from "./PokeCard.module.css";
 import { TypesPins } from "../../services/tools/TypesPins";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -22,8 +22,12 @@ const PokeCard = ({ pokemon }) => {
     };
 
     return (
-        <div className="card">
-            <button className="favorite-btn" onClick={() => handleFavorite()}>
+        <div
+            className={styles.card}
+            role="article"
+            aria-label={`${pokemon.name}-card`}
+        >
+            <button className={styles.favoriteBtn} onClick={() => handleFavorite()}>
                 {isFavoriteCond ? (
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -42,17 +46,31 @@ const PokeCard = ({ pokemon }) => {
             </button>
             <img
                 src={pokemon.sprites.other["official-artwork"]["front_default"]}
+                aria-label={`${pokemon.name}-image`}
             />
-            <h3 className="title">{pokemon.name}</h3>
-            <div className="types">
-                {pokemon.types.map((type, key) => (
-                    <span
-                        key={key}
-                        style={{ backgroundColor: TypesPins(type.type.name) }}
-                    >
-                        {type.type.name}
-                    </span>
-                ))}
+            <div className={styles.infos}>
+                <h3
+                    className={styles.title}
+                    aria-label={`${pokemon.name}-title`}
+                >
+                    {pokemon.name}
+                </h3>
+                <div
+                    className={styles.types}
+                    aria-label={`${pokemon.name}-types`}
+                >
+                    {pokemon.types.map((type, key) => (
+                        <span
+                            key={key}
+                            style={{
+                                backgroundColor: TypesPins(type.type.name),
+                            }}
+                            aria-label={`${pokemon.name}-type-${type.type.name}`}
+                        >
+                            {type.type.name}
+                        </span>
+                    ))}
+                </div>
             </div>
         </div>
     );

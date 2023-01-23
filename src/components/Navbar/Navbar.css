@@ -1,0 +1,13 @@
+nav {
+  padding: 1rem;
+  background-color: #F2F2F2;
+}
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+nav ul li a {
+  text-decoration: none;
+  color: black;
+}

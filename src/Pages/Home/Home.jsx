@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PokeCard from "../../components/PokeCard/PokeCard";
 import Pagination from "../../components/Pagination/Pagination";
+import Navbar from "../../components/Navbar/Navbar";
 import { getPokemons } from "../../services/Pokemon/Pokemon";
 import { PokemonAPI } from "../../services/apis/apis";
-import "./Home.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { setPokemons } from "../../redux/slices/pokemonsSlice";
 import { setPagination } from "../../redux/slices/paginationSlice";
+import styles from "./Home.module.css";
 
 const Home = () => {
     const dispatch = useDispatch();
@@ -49,9 +50,10 @@ const Home = () => {
                 <p>Loading ...</p>
             ) : (
                 <>
+                    <Navbar />
                     <Pagination handlePagination={handlePagination} />
 
-                    <section className="pokemons-ctnr">
+                    <section className={styles.pokemonsCtnr}>
                         {pokemonList.length > 0 ? (
                             pokemonList.map((pokemon, key) => (
                                 <PokeCard pokemon={pokemon} key={key} />

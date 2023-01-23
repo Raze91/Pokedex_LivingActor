@@ -1,0 +1,42 @@
+.card {
+  letter-spacing: 1px;
+  display: flex;
+  flex-direction: column;
+  width: calc(320px - 1rem);
+  text-align: center;
+  text-transform: capitalize;
+  position: relative;
+  cursor: pointer;
+  text-decoration: none;
+}
+.card:hover {
+  transition: 0.1s ease-in-out;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.card img {
+  background-color: #f2f2f2;
+  border-radius: 4px;
+}
+.card .favoriteBtn {
+  all: unset;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 40px;
+}
+.card .infos {
+  text-align: left;
+  padding: 0 1rem 1rem 1rem;
+}
+.card .infos .title {
+  color: #313131;
+}
+.card .infos .types {
+  display: flex;
+  gap: 10px;
+}
+.card .infos .types span {
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+}

@@ -1,0 +1,22 @@
+.typesCtnr {
+  display: flex;
+  padding: 1rem;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.typesCtnr span {
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+
+.pokemonsCtnr {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem 0;
+}

@@ -15,3 +15,12 @@ export const getPokemons = async (url) => {
         };
     });
 };
+
+export const getPokemonsByTypes = async (url) => {
+    const res = await axios.get(url);
+    return res.data.pokemon.slice(0, 20).map((item) => {
+        return axios.get(item.pokemon.url).then((subRes) => {
+            return subRes.data;
+        });
+    });
+};

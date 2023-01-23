@@ -1,11 +1,11 @@
 import React from "react";
-import "./Pagination.css";
+import styles from "./Pagination.module.css";
 import { useSelector } from "react-redux";
 
 const Pagination = ({ handlePagination }) => {
     const pagination = useSelector((state) => state.pagination);
     return (
-        <div className="pagination-ctnr">
+        <div className={styles.paginationCtnr}>
             <button
                 disabled={pagination.prev === null}
                 onClick={() => handlePagination(pagination.prev)}

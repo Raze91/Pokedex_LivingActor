@@ -26,7 +26,7 @@ export const TypesPins = (type) => {
             return "#399CFF";
         case "electric":
             return "#FFC631";
-        case "psychix":
+        case "psychic":
             return "#FF72A5";
         case "ice":
             return "#5ACDE7";
